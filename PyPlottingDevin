@@ -1,0 +1,37 @@
+import numpy
+import matplotlib.pyplot
+import time
+
+# Task 2: Define 3 x arrays
+x_100 = numpy.linspace(-0.1, 0.1, 100)
+x_10000 = numpy.linspace(-0.1, 0.1, 10000)
+x_1000000 = numpy.linspace(-0.1, 0.1, 1000000)
+
+# Task 3: Define y arrays
+y_100 = x_100**2 * numpy.sin(10 / x_100)
+y_10000 = x_10000**2 * numpy.sin(10 / x_10000)
+y_1000000 = x_1000000**2 * numpy.sin(10 / x_1000000)
+
+
+# Step 5: Measure the time to calculate the 1,000,000 point plot
+# Doing this step first because I didn't want to keep exiting out of the plot point tab
+start_time = time.time()
+matplotlib.pyplot.figure()
+matplotlib.pyplot.scatter(x_1000000, y_1000000, s=0.1)
+matplotlib.pyplot.close()
+end_time = time.time()
+
+
+print(f"\nTime to plot 1,000,000 points: {end_time - start_time:.2f} seconds")
+
+# Step 4: Plot the 10,000 point graph
+matplotlib.pyplot.figure()
+matplotlib.pyplot.plot(x_10000, y_10000, c='green', label = "10,000 points")
+matplotlib.pyplot.title(r"$y = x^2 \sin\left(\dfrac{10}{x}\right)$")
+matplotlib.pyplot.xlabel("x")
+matplotlib.pyplot.xlim(-0.05,0.05)
+matplotlib.pyplot.ylabel("y")
+matplotlib.pyplot.ylim(-0.0025,0.0025)
+matplotlib.pyplot.legend()
+matplotlib.pyplot.grid(True)
+matplotlib.pyplot.show()
